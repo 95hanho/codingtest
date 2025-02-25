@@ -25,7 +25,6 @@ function solution(a, b, g, s, w, t) {
 	}
 
 	console.log(g_efficiency, s_efficiency);
-
 	// 조건
 	// 도시마다 금 효율이 좋으면 금 먼저, 은 효율이 좋으면 은 먼저 가져온다.
 	// 근데 예를 들어 금이면 효율이 좋은 트럭부터 출발시키는게??
@@ -35,7 +34,11 @@ function solution(a, b, g, s, w, t) {
 	const truck = new Array(g.length).fill(null);
 	let store_a = a;
 	let store_b = b;
+	// 실을 때 금, 은 중에 머가 더 필요한지 검사
+	// 더 필요한 것부터 가져오기
 	//
+
+	// 금부터 다 가져오고 은 가져올 때 걸리는 시간
 	let g_time = 0;
 	while (a > 0 || b > 0) {
 		g_efficiency.map((index) => {
@@ -44,8 +47,11 @@ function solution(a, b, g, s, w, t) {
 				truck[index] = carry_g(index);
 			}
 		});
+		// 내리기
+		truck.map((v) => {});
 
-		g_time++;
+		console.log("truck", truck, "a", a, "b", b);
+		return;
 	}
 
 	// 금 먼저
@@ -61,7 +67,7 @@ function solution(a, b, g, s, w, t) {
 		s[index] -= silver;
 		return [gold, silver, t[index], t[index], "go"];
 	}
-	// 은 먼저저
+	// 은 먼저
 	function carry_s(index) {
 		let quantity = w[index];
 		let silver = quantity < s[index] ? quantity : s[index];
