@@ -1,3 +1,4 @@
+// 깊이 우선 탐색
 function DFS(node) {
 	if (visited1[node - 1]) return;
 	dfs_road.push(node);
